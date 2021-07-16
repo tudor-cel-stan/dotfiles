@@ -1,7 +1,19 @@
-" Bindings
 
-" General
-set number	" Show line numbers
+"""""" General
+
+set nocompatible
+set wildmenu
+set cursorline
+set cursorcolumn
+set number relativenumber	" Show relative line numbers
+set nu rnu
+set showmatch
+filetype indent plugin on
+filetype plugin on
+let mapleader = ","
+set clipboard=unnamedplus
+au BufRead /tmp/mutt-* set tw=72
+
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
 set textwidth=100	" Line wrap (number of cols)
@@ -19,40 +31,71 @@ set shiftwidth=4	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
 set softtabstop=4	" Number of spaces per Tab
+
+"""""" Bindings 
+
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-l> :wincmd l<CR>
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>s :Startify<CR>
+nnoremap <leader>w<leader>d :Diary<CR>
+nnoremap . :
+nnoremap j gj
+nnoremap k gk
  
-" Advanced
+"""""" Advanced
+
 set confirm	" Prompt confirmation dialogs
-set ruler	" Show row and column ruler information
- 
+set ruler 
 set undolevels=1000	" Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
  
-" Colors
+"""""" Colors
+
+set t_Co=256
 colorscheme zenburn
 syntax on
 
-" Brackets
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+"""""" Plugins
 
-" Plugins
 execute pathogen#infect('plugins/{}')
+Helptags
 
-" NerdTree
-" Start NERDTree. If a file is specified, move the cursor to its window.
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+    " NerdTree
 
+let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
-
+let NERDTreeKeepTreeInNewTab=1
 let NERDTreeShowBookmarks=1
 
-" Startify
+    " VimWiki
+    
+command! Diary VimwikiDiaryIndex
+augroup vimwikigroup
+    autocmd!
+        " automatically update links on read diary
+        autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
+augroup end
+
+function! Auwiki()
+    set relativenumber! nu!
+    set cursorline!
+    set cursorcolumn!
+    Calendar
+    vertical resize 23
+    rightb new
+    VimwikiIndex
+    VimwikiGoto\To\ Do
+    wincmd l
+endfunction
+
+autocmd VimEnter *.wiki call Auwiki()
+
+    " Startify
+    
 let g:startify_lists = [
         \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
         \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
@@ -60,7 +103,7 @@ let g:startify_lists = [
 
 let g:startify_bookmarks = systemlist("cut -sd' ' -f 2- ~/.NERDTreeBookmarks")
 
-let g:startify_bookmarks = [ {'v': '~/.vimrc'}, {'z': '~/.zshrc'}, {'b': '~/.config/bspwm/bspwmrc'}, {'s': '~/.config/sxhkd/sxhkdrc'}, {'a': '~/.config/alacritty/alacritty.yml'}, {'t': '~/.config/termite/config'}, {'p': '~/.config/polybar/config'}, {'c': '~/.config/rofi/config.rasi'}, {'r':'~/.config/rofi/rofi-theme.rasi'}]
+let g:startify_bookmarks = [ {'v': '~/.vim/vimrc'}, {'z': '~/.zshrc'}, {'b': '~/.config/bspwm/bspwmrc'}, {'s': '~/.config/sxhkd/sxhkdrc'}, {'a': '~/.config/alacritty/alacritty.yml'}, {'p': '~/.config/polybar/config'}, {'c': '~/.config/rofi/config.rasi'}, {'t':'~/.config/rofi/rofitheme.rasi'}, {'r': '~/.config/ranger/rc.conf'}, {'n': '~/.config/neomutt/neomuttrc'}]
 
 let s:startify_ascii_header = [
 \ '          ▟▙            ',
@@ -74,3 +117,4 @@ let s:startify_ascii_header = [
 \]
 let g:startify_custom_header = map(s:startify_ascii_header +
        \ startify#fortune#quote(), '"   ".v:val')
+
