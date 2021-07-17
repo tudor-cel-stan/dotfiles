@@ -189,12 +189,12 @@ colors:
     cyan: '#8cd0d3'
     green: '#709080'
     magenta: '#dc8cc3'
-    red: '#754545'
+    red: '#874545'
     white: '#dcdccc'
     yellow: '#cb9a72'
     
   bright:
-    black: '#4a4a4a'
+    black: '#5c5c5c'
     blue: '#94bff3'
     cyan: '#93e0e3'
     green: '#60b48a'

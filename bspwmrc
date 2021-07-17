@@ -5,7 +5,7 @@ bspc rule -r "*"
 
 xrandr --output eDP-1-1 --primary --mode 1920x1080 --rotate normal &
 # sxhkd &
-launch.sh &
+dash /home/tudorcelstan/scripts/launch.sh &
 picom &
 pgrep -x sxhkd > /dev/null || sxhkd -m 1 &
 xinput set-prop 'MSFT0001:01 06CB:CD5F Touchpad' 'libinput Tapping Enabled' 1 &

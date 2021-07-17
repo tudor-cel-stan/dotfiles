@@ -2,7 +2,8 @@
 
 ## Show my face in mpv ##
 
-v4l2-ctl --set-fmt-video=width=640,height=480
+v4l2-ctl --set-fmt-video=width=640,height=480 
+v4l2-ctl -d /dev/video0 -c saturation=0,sharpness=5,brightness=100,contrast=50
 mpv --no-input-default-bindings --profile=low-latency --no-osc --untimed --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg -vf=hflip av://v4l2:/dev/video0 &
 sleep 1
 bspc node -t pseudo_tiled

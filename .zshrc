@@ -66,7 +66,29 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey -v
 export KEYTIMEOUT=1
-# User configuration
+
+
+
+function zle-keymap-select {
+   if [[ ${KEYMAP} == vicmd ]] ||
+      [[ $1 = 'block' ]]; then
+     echo -ne '\e[1 q'
+
+   elif [[ ${KEYMAP} == main ]] ||
+         [[ ${KEYMAP} == viins ]] ||
+         [[ ${KEYMAP} = '' ]] ||
+         [[ $1 = 'beam' ]]; then
+     echo -ne '\e[5 q'
+   fi
+}
+zle -N zle-keymap-select
+# Use beam shape cursor on startup.
+echo -ne '\e[5 q'
+
+# Use beam shape cursor for each new prompt.
+preexec() {
+        echo -ne '\e[5 q'
+}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -93,6 +115,7 @@ alias cter="vim ~/.config/termite/config"
 alias cdp="cd /run/media/storage/Pictures"
 alias cdm="cd /run/media/storage/Music"
 alias cd.="cd ~/.config"
+alias cdot="cd ~/dotfiles"
 alias vtop="vtop --theme gooey"
 alias rgr="ranger"
 alias vi="vim"
@@ -121,5 +144,3 @@ alias SS="sudo systemctl"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Git Alias
-alias config='/usr/bin/git --git-dir=/home/tudorcelstan/dotfiles/ --work-tree=/home/tudorcelstan'
