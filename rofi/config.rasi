@@ -1,0 +1,10 @@
+/** Basic config file **/
+
+configuration {
+  modi:               "window,drun,run";
+  show-icons:         false;
+  icon-theme:         "Reversal-dark";
+  terminal:           "/usr/bin/alacritty";
+  font:				  "Knack Nerd Font 12";
+}
+@import "/home/tudorcelstan/.config/rofi/rofitheme.rasi"

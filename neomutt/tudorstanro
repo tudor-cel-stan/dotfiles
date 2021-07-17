@@ -1,0 +1,31 @@
+
+
+# Receiving
+
+set imap_user = "tudor.stan.ro@gmail.com"
+set imap_pass = "wtlyaunncjvhhruh"
+unset folder
+set folder = "imaps://tudor.stan.ro@imap.gmail.com/"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Mesaje nefinalizate"
+set record = "+[Gmail]/Mesaje trimise"
+set trash = "+[Gmail]/Coș de gunoi"
+mailboxes ="INBOX" ="[Gmail]/Mesaje nefinalizate" ="[Gmail]/Mesaje trimise" ="[Gmail]/Coș de gunoi"
+
+# Sending
+
+set smtp_url = "smtp://tudor.stan.ro@smtp.gmail.com:587"
+set smtp_pass = "wtlyaunncjvhhruh"
+set from = "tudor.stan.ro@gmail.com"
+set hostname = "gmail.com"
+set signature = "Tudor"
+
+# Connection
+
+set ssl_force_tls = yes
+unset ssl_starttls
+
+# Hook
+
+account-hook tudor.stan.ro@gmail.com/ "set imap_user=tudor.stan.ro@gmail.com imap_pass=wtlyaunncjvhhruh"
+

@@ -1,0 +1,3 @@
+q
+bind -f common u shell ~/.config/cmus/updatelib.sh
+quit

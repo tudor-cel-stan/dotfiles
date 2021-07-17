@@ -1,0 +1,236 @@
+#
+# wm independent hotkeys
+#
+
+# screenshot region
+super + alt + c
+         import /run/media/storage/Pictures/Screenshots/$(date +%y%b%d-%H%M%S)_screen.png
+
+# screenshot fullscreen
+super + alt + p
+         import -window root /run/media/storage/Pictures/Screenshots/$(date +%y%b%d-%H%M%S)_screen.png
+
+# terminal emulator
+super + Return
+	alacritty
+
+# launch vtop
+super + g
+	alacritty -e gotop
+
+# launch messenger
+super + s
+	signal-desktop
+
+# launch mail client
+super + e
+	bspc desktop ^3 --focus && alacritty -e neomutt
+
+# launch music player
+super + m
+	bspc desktop --focus ^6 && alacritty -e cmus 
+
+# launch pdf reader
+super + z
+        bspc desktop ^5 --focus && zathura
+# launch color picker
+super + i
+	gcolor3
+# launch video player
+super + p
+	gtk-launch mpv.desktop
+
+# launch file manager
+super + r
+	bspc desktop --focus ^4 && alacritty -e ranger
+
+# launch text editor
+super + v
+	bspc desktop --focus ^5 && alacritty -e vim
+
+# launch vimwiki
+super + w
+        bspc desktop --focus ^5 && alacritty -e vim ~/vimwiki/index.wiki
+
+# stop redhift
+super + r
+  killall redshift
+
+# changing the brightness
+
+alt {6,5}
+  brightnessctl s 2000{+,-}
+
+# changing the Volume
+
+alt {3,2}
+  pactl -- set-sink-volume 0 {+,-}5% 
+
+alt + 1
+  pactl set-sink-mute 0 toggle 
+
+# launch youtube
+# super + y
+#	https://www.youtube.com
+
+# Optimus switch to nvidia graphics card
+super + alt + shift + n
+	optimus-manager --switch nvidia --no-confirm
+
+# Optimus switch to hybrid graphics card
+super + alt + shift + m
+	optimus-manager --switch hybrid --no-confirm
+
+# Optimus switch to integrated graphics card
+super + alt + shift + b
+	optimus-manager --switch integrated --no-confirm
+
+# browser
+super + b
+    epiphany
+
+# mpv webcam
+super + ctrl + w
+    dash /home/tudorcelstan/scripts/webcam
+
+# darktable
+super + d
+    darktable && bspc desktop --fullscreen 
+
+# program launcher
+super + @space
+	rofi -show drun
+
+# cycle through all open windows
+super + Tab
+    rofi -show window
+
+# log out dialogue
+super + q
+  rofi -show power-menu -modi power-menu:./.config/rofi-power-menu/rofi-power-menu
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + shift + q
+	bspc quit
+
+# xfce log out
+#super + shift + q
+#	xfce4-session-logout
+	
+# restart bspwm
+super + shift + r
+	bspc wm -r
+
+# kill and close
+super + {ctrl,shift + } c
+	bspc node -{k,c}
+
+# shutdown
+super + alt + shift + s
+	shutdown now
+
+# restart
+super + alt + shift + r
+	reboot
+
+# alternate between the tiled and monocle layout
+super + shift + Return
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+# super + y
+#	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+super + shift + space
+	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+super + shift + {t,p,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + shift + {h,j,k,l}
+	bspc node -s {west,south,north,east}
+
+# fous node relative position
+super + {h,j,k,l}
+        bspc node -f {west,south,north,east}
+
+# focus the node for the given path jump
+# super + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+super + {ctrl + ,shift + } Tab
+        bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + {_,shift + }n 
+	bspc desktop -f {next,prev}.local
+
+# focus the last node/desktop
+# super + {grave,Tab}
+#	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}

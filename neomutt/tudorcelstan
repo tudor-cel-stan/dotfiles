@@ -1,0 +1,30 @@
+
+
+# Receiving
+
+set imap_user = "tudorcelstan@gmail.com"
+set imap_pass = "mchechsziqlezxel"
+unset folder
+set folder = "imaps://tudorcelstan@imap.gmail.com/"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set trash = "+[Gmail]/Bin"
+mailboxes =INBOX ="[Gmail]/Drafts" ="[Gmail]/Sent Mail" =[Gmail]/Bin
+
+# Sending
+
+set smtp_url = "smtp://tudorcelstan@smtp.gmail.com:587"
+set smtp_pass = "mchechsziqlezxel"
+set from = "tudorcelstan@gmail.com"
+set hostname = "gmail.com"
+set signature = "Tudor"
+
+# Connection
+
+set ssl_force_tls = yes
+unset ssl_starttls
+
+# Hook
+
+account-hook $folder "set imap_user=tudorcelstan@gmail.com imap_pass=mchechsziqlezxel"

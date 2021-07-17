@@ -1,0 +1,32 @@
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+map i recolor
+set recolor true
+
+# Colors
+
+set inputbar-fg "#BEBEBE"
+set inputbar-bg "#3A3A3A"
+set completion-bg "#3A3A3A"
+set completion-fg "#BEBEBE"
+set completion-group-bg "#3A3A3A"
+set completion-group-fg "#BEBEBE"
+set completion-highlight-bg "#CB9A69"
+set completion-highlight-fg "#3A3A3A"
+set notification-bg "#3A3A3A"
+set notification-fg "BEBEBE"
+set notification-error-bg "#3A3A3A"
+set notification-error-fg "#BEBEBE"
+set notification-warning-bg "#3A3A3A"
+set notification-warning-fg "#BEBEBE"
+set render-loading-bg "#3A3A3A"
+set render-loading-fg "#BEBEBE"
+set highlight-color "#CB9A69"
+set highlight-active-color "#705050"
+set statusbar-fg "#BEBEBE"
+set statusbar-bg "#3A3A3A"
+set default-bg "#3A3A3A"
+set default-fg "#BEBEBE"
+set recolor-darkcolor "#FFFFFF"
+set recolor-lightcolor "#3A3A3A"
