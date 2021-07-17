@@ -1,8 +1,0 @@
-text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -collapse_br_tags -dump %s; nametemplate=%s.html; copiousoutput
-text/html; xdg-open %s &> /dev/null &; nametemplate=%s.html
-application/pdf; zathura %s
-application/vnd.openxmlformats-officedocument.wordprocessingml.document; pandoc --from docx --to markdown %s; copiousoutput
-application/vnd.oasis.opendocument.text; pandoc --from odt --to markdown %s; copiousoutput
-text/plain; cat %s
-image/*; geeqie %s
-
