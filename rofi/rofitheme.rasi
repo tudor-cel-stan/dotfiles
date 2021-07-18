@@ -1,90 +1,131 @@
-/*
- * ROFI One Dark
- *
- * Based on OneDark.vim (https://github.com/joshdick/onedark.vim)
- *
- * Author: Benjamin Stauss
- * User: me-benni
- *
+/**
+ * User: deadguy
+ * Copyright: deadguy
  */
 
+configuration {
+	display-drun:    "Menu";
+	display-run:     "Execute";
+	display-window:  "Windows";
+	show-icons:      false;
+	sidebar-mode:    true;
+}
 
 * {
-  black:      #000000;
-  red:        #bd6f7c;
-  green:      #95ee8f;
-  yellow:     #f8c456;
-  blue:       #6eaafb;
-  mangenta:   #8a8296;
-  cyan:       #6cdcf7;
-  emphasis:   #754545;
-  text:       #ffd7af;
-  text-alt:   #bebebe;
-  fg:         #506070;
-  bg:         #282c34;
+	background-color:            #3a3a3a;
+	text-color:                  #bebebe;
+	selbg:                       #cb9a72;
+	actbg:                       #3a3a3a;
+	urgbg:                       #874545;
+	winbg:			     #874545;
 
-  spacing: 0;
-  background-color: transparent;
+	selected-normal-foreground:  @winbg;
+	normal-foreground:           @text-color;
+	selected-normal-background:  @actbg;
+	normal-background:           @background-color;
 
-  font: "Hack Nerd Font 14";
-  text-color: @text;
+	selected-urgent-foreground:  @background-color;
+	urgent-foreground:           @text-color;
+	selected-urgent-background:  @urgbg;
+	urgent-background:           @background-color;
+
+	selected-active-foreground:  @winbg;
+	active-foreground:           @text-color;
+	selected-active-background:  @actbg;
+	active-background:           @selbg;
+
+	line-margin:                 2;
+	line-padding:                2;
+	separator-style:             "none";
+	hide-scrollbar:              "true";
+	margin:                      0;
+	padding:                     0;
 }
 
 window {
-  transparency: "real";
-  fullscreen: true;
-  background-color: #323232dd;
+	location:	 center;
+	anchor:		 center;
+	height:		 30%;
+	width:		 10%;
+	orientation: horizontal;
+	children:	 [mainbox];
 }
 
 mainbox {
-  padding: 35% 35%;
+	spacing:  0.8em;
+	children: [ entry,listview,mode-switcher ];
+}
+
+button { padding: 5px 2px; }
+
+button selected {
+	background-color: @active-background;
+	text-color:       @background-color;
 }
 
 inputbar {
-  margin: 0px 0px 20px 0px;
-  children: [entry, case-indicator];
-}
-
-entry {
-  margin: 0px 7px;
+	padding: 5px;
+	spacing: 5px;
 }
 
 listview {
-  spacing: 5px;
-  dynamic: true;
-  scrollbar: false;
+	spacing: 0.5em;
+	dynamic: false;
+	cycle:   true;
 }
 
-element {
-  padding: 5px;
-  text-color: @text-alt;
-  highlight: bold #506070; /* green */
-  border-radius: 3px;
+element { padding: 10px; }
+
+entry {
+	expand:         false;
+	text-color:     @normal-foreground;
+	vertical-align: 1;
+	padding:        5px;
 }
 
-element selected {
-  background-color: @emphasis;
-  text-color: @text;
+element normal.normal {
+	background-color: @normal-background;
+	text-color:       @normal-foreground;
 }
 
-element urgent, element selected urgent {
-  text-color: @red;
+element normal.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
 }
 
-element active, element selected active {
-  text-color: @purple;
+element normal.active {
+	background-color: @active-background;
+	text-color:       @active-foreground;
 }
 
-message {
-  padding: 5px;
-  border-radius: 3px;
-  background-color: @emphasis;
-  border: 1px;
-  border-color: @cyan;
+element selected.normal {
+	background-color: @selected-normal-background;
+	text-color:       @selected-normal-foreground;
+	border:           0 5px solid 0 0;
+	border-color:	    @active-background;
 }
 
-button selected {
-  padding: 5px;
-  border-radius: 3px;
-  background-color: @emphasis;
+element selected.urgent {
+	background-color: @selected-urgent-background;
+	text-color:       @selected-urgent-foreground;
+}
+
+element selected.active {
+	background-color: @selected-active-background;
+	text-color:       @selected-active-foreground;
+}
+
+element alternate.normal {
+	background-color: @normal-background;
+	text-color:       @normal-foreground;
+}
+
+element alternate.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
+}
+
+element alternate.active {
+	background-color: @active-background;
+	text-color:       @active-foreground;
 }

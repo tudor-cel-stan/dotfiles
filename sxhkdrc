@@ -27,7 +27,7 @@ super + e
 	bspc desktop ^3 --focus && alacritty -e neomutt
 
 # launch music player
-super + m
+super + c
 	bspc desktop --focus ^6 && alacritty -e cmus 
 
 # launch pdf reader
@@ -37,7 +37,7 @@ super + z
 super + i
 	gcolor3
 # launch video player
-super + p
+super + m
 	gtk-launch mpv.desktop
 
 # launch file manager
@@ -58,15 +58,15 @@ super + r
 
 # changing the brightness
 
-alt {6,5}
+super + {F6,F5}
   brightnessctl s 2000{+,-}
 
 # changing the Volume
 
-alt {3,2}
+super + {F3,F2}
   pactl -- set-sink-volume 0 {+,-}5% 
 
-alt + 1
+super + F1
   pactl set-sink-mute 0 toggle 
 
 # launch youtube
@@ -87,7 +87,7 @@ super + alt + shift + b
 
 # browser
 super + b
-    epiphany
+    qutebrowser
 
 # mpv webcam
 super + ctrl + w
@@ -99,15 +99,19 @@ super + d
 
 # program launcher
 super + @space
-	rofi -show drun
+    dmenu_run
 
 # cycle through all open windows
 super + Tab
     rofi -show window
 
+# show To Do 
+super + alt + space
+    dash ~/scripts/todo
+
 # log out dialogue
 super + q
-  rofi -show power-menu -modi power-menu:./.config/rofi-power-menu/rofi-power-menu
+    rofi -show power-menu -modi power-menu:./.config/rofi-power-menu/rofi-power-menu
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -186,7 +190,7 @@ super + {ctrl + ,shift + } Tab
         bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
-super + {_,shift + }n 
+super + {n, shift + n} 
 	bspc desktop -f {next,prev}.local
 
 # focus the last node/desktop
@@ -194,10 +198,10 @@ super + {_,shift + }n
 #	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+# super + {o,i}
+#	bspc wm -h off; \
+#	bspc node {older,newer} -f; \
+#	bspc wm -h on
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}

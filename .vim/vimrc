@@ -58,6 +58,10 @@ set t_Co=256
 colorscheme zenburn
 syntax on
 
+"""""" Suckless Build Automation
+
+autocmd BufWritePost config.h,config.def.h !sudo make install
+
 """""" Plugins
 
 execute pathogen#infect('plugins/{}')

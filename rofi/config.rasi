@@ -5,6 +5,6 @@ configuration {
   show-icons:         false;
   icon-theme:         "Reversal-dark";
   terminal:           "/usr/bin/alacritty";
-  font:				  "Knack Nerd Font 12";
+  font:				  "Open Sans Condensed 12";
 }
-@import "/home/tudorcelstan/.config/rofi/rofitheme.rasi"
+@import "/home/tudorcelstan/.config/rofi/sidetab.rasi"
