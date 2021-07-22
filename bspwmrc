@@ -10,6 +10,8 @@ xinput set-prop 'MSFT0001:01 06CB:CD5F Touchpad' 'libinput Tapping Enabled' 1 &
 xset s off -dpms &
 setxkbmap -option caps:swapescape &
 nitrogen --restore &
+# killall "redshift"
+# redshift-gtk
 killall "blueman-applet" 
 blueman-applet &
 killall "nm-applet"

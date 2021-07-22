@@ -2,72 +2,37 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-      source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-      fi
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/tudorcelstan/.oh-my-zsh"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export EDITOR='vim'
 export $TERM="alacritty"
+export BROWSER="qutebrowser"
 PATH=$PATH:/home/tudorcelstan/scripts/
+export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
 
-# Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update
-# (in days).
 # export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
 DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts
-# (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
-# COMPLETION_WAITING_DOTS="true"
 
 # History timestamps
 HIST_STAMPS="dd.mm.yyyy"
 
-# Oh-my-zsh plugins
-plugins=(git
-         zsh-autosuggestions
-         zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
+# Vi mode in shell
 
 bindkey -v
 export KEYTIMEOUT=1
-
-
 
 function zle-keymap-select {
    if [[ ${KEYMAP} == vicmd ]] ||
@@ -82,28 +47,19 @@ function zle-keymap-select {
    fi
 }
 zle -N zle-keymap-select
+
 # Use beam shape cursor on startup.
 echo -ne '\e[5 q'
-
 # Use beam shape cursor for each new prompt.
 preexec() {
         echo -ne '\e[5 q'
 }
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor 
-export EDITOR='vim'
-
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
 # Aliases
 alias czsh="vim ~/.zshrc"
-alias cohmyzsh="vim ~/.oh-my-zsh"
 alias cvim="vim ~/.vimrc"
 alias csx="vim ~/.config/sxhkd/sxhkdrc"
 alias cbsp="vim ~/.config/bspwm/bspwmrc"
@@ -130,6 +86,7 @@ alias ssaverstat="xset q"
 alias ls="ls -a --color=always --group-directories-first"
 alias lsa="exa -la --color=always --group-directories-first"
 alias ff="fastfetch"
+alias SS="sudo systemctl"
 alias vm="optimus-manager --print-mode"
 alias tmuxk="tmux kill-session -t"
 alias tmuxl="tmux list-sessions"
@@ -139,8 +96,9 @@ screenshot ()
 {
        import -window root /run/media/storage/Pictures/Screenshots/$(tshhmmss)_screen.png
 }
-alias SS="sudo systemctl"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+source /home/tudorcelstan/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

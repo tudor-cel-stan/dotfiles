@@ -7,4 +7,4 @@ configuration {
   terminal:           "/usr/bin/alacritty";
   font:				  "Open Sans Condensed 12";
 }
-@import "/home/tudorcelstan/.config/rofi/sidetab.rasi"
+@import "/home/tudorcelstan/.config/rofi/rofitheme.rasi"
