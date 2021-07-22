@@ -348,7 +348,7 @@ c.colors.hints.fg = '#3a3a3a'
 # Background color for hints. Note that you can use a `rgba(...)` value
 # for transparency.
 # Type: QssColor
-c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 247, 133, 0.8), stop:1 rgba(255, 197, 66, 0.8))'
+c.colors.hints.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgba(203, 154, 114, 0.8), stop:1 rgba(255, 215, 175, 0.8))'
 
 # Font color for the matched part of hints.
 # Type: QtColor
@@ -543,7 +543,7 @@ c.colors.tabs.odd.fg = '#bebebe'
 
 # Background color of unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.odd.bg = '#2b2b2b'
+c.colors.tabs.odd.bg = '#3a3a3a'
 
 # Foreground color of unselected even tabs.
 # Type: QtColor
@@ -551,7 +551,7 @@ c.colors.tabs.even.fg = '#bebebe'
 
 # Background color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.bg = '#2b2b2b'
+c.colors.tabs.even.bg = '#3a3a3a'
 
 # Foreground color of selected odd tabs.
 # Type: QtColor
@@ -559,7 +559,7 @@ c.colors.tabs.selected.odd.fg = '#bebebe'
 
 # Background color of selected odd tabs.
 # Type: QtColor
-c.colors.tabs.selected.odd.bg = '#3a3a3a'
+c.colors.tabs.selected.odd.bg = '#2b2b2b'
 
 # Foreground color of selected even tabs.
 # Type: QtColor
@@ -567,7 +567,7 @@ c.colors.tabs.selected.even.fg = '#bebebe'
 
 # Background color of selected even tabs.
 # Type: QtColor
-c.colors.tabs.selected.even.bg = '#3a3a3a'
+c.colors.tabs.selected.even.bg = '#2b2b2b'
 
 # Foreground color of pinned unselected odd tabs.
 # Type: QtColor
@@ -616,13 +616,13 @@ c.colors.webpage.bg = 'white'
 # `colors.webpage.darkmode.threshold.background` to 205.  - "With
 # selective inversion of everything": Combines the two variants   above.
 # Type: Bool
-c.colors.webpage.darkmode.enabled = False
+c.colors.webpage.darkmode.enabled = True
 
 # Render all colors as grayscale. This only has an effect when
 # `colors.webpage.darkmode.algorithm` is set to `lightness-hsl` or
 # `brightness-rgb`.
 # Type: Bool
-c.colors.webpage.darkmode.grayscale.all = False
+c.colors.webpage.darkmode.grayscale.all = True
 
 # Default font size to use. Whenever "default_size" is used in a font
 # setting, it's replaced with the size listed here. Valid values are
