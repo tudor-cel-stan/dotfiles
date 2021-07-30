@@ -111,7 +111,11 @@ super + alt + space
 
 # log out dialogue
 super + q
-    rofi -show power-menu -modi power-menu:./.config/rofi-power-menu/rofi-power-menu
+    rofi -show menu -modi "menu:~/scripts/rofi-power-menu"
+
+# lock screen
+super + shift + w
+    betterlockscreen -l dimblur
 
 # make sxhkd reload its configuration files:
 super + Escape

@@ -190,7 +190,7 @@ colors:
     green: '#709080'
     magenta: '#dc8cc3'
     red: '#874545'
-    white: '#dcdccc'
+    white: '#bebebe'
     yellow: '#cb9a72'
     
   bright:
@@ -200,12 +200,12 @@ colors:
     green: '#60b48a'
     magenta: '#ec93d3'
     red: '#b57676'
-    white: '#ffffff'
+    white: '#bebebe'
     yellow: '#ffd7af'
 
   primary:
     background: '#3a3a3a'
-    foreground: '#dcdccc'
+    foreground: '#bebebe'
 
   selection:
     background: '#21322f'

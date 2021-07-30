@@ -3,7 +3,6 @@
 set nocompatible
 set wildmenu
 set cursorline
-set cursorcolumn
 set number relativenumber	" Show relative line numbers
 set nu rnu
 set showmatch
@@ -86,7 +85,6 @@ augroup end
 function! Auwiki()
     set relativenumber! nu!
     set cursorline!
-    set cursorcolumn!
     Calendar
     vertical resize 23
     rightb new

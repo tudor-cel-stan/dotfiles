@@ -14,8 +14,6 @@ export BROWSER="qutebrowser"
 PATH=$PATH:/home/tudorcelstan/scripts/
 export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
 
-ZSH_THEME="robbyrussell"
-
 # CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
@@ -33,27 +31,6 @@ HIST_STAMPS="dd.mm.yyyy"
 
 bindkey -v
 export KEYTIMEOUT=1
-
-function zle-keymap-select {
-   if [[ ${KEYMAP} == vicmd ]] ||
-      [[ $1 = 'block' ]]; then
-     echo -ne '\e[1 q'
-
-   elif [[ ${KEYMAP} == main ]] ||
-         [[ ${KEYMAP} == viins ]] ||
-         [[ ${KEYMAP} = '' ]] ||
-         [[ $1 = 'beam' ]]; then
-     echo -ne '\e[5 q'
-   fi
-}
-zle -N zle-keymap-select
-
-# Use beam shape cursor on startup.
-echo -ne '\e[5 q'
-# Use beam shape cursor for each new prompt.
-preexec() {
-        echo -ne '\e[5 q'
-}
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"

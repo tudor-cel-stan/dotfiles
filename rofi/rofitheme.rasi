@@ -49,7 +49,7 @@ configuration {
 window {
 	location:	 north;
 	anchor:		 north;
-	height:		 13.9%;
+	height:		 12.8%;
 	width:		 35%;
 	orientation: horizontal;
 	children:	 [mainbox];
